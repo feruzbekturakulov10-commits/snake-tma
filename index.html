@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BURBERRY — Official Store</title>
+  <meta name="description" content="Официальный онлайн-магазин BURBERRY. Роскошная мода, аксессуары и ароматы."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ===== ANIMATED BACKGROUND ===== -->
+  <canvas id="bgCanvas"></canvas>
+  <div class="plaid-overlay"></div>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loader">
+    <div class="loader-logo">BURBERRY</div>
+    <div class="loader-line"><span></span></div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-left">
+      <a href="#" class="nav-link">Женщинам</a>
+      <a href="#" class="nav-link">Мужчинам</a>
+      <a href="#" class="nav-link">Детям</a>
+    </div>
+    <div class="nav-logo">BURBERRY</div>
+    <div class="nav-right">
+      <a href="#" class="nav-link" id="searchBtn">&#x2315;</a>
+      <a href="#" class="nav-link" id="cartBtn" onclick="toggleCart(event)">
+        Корзина <span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-sub">Коллекция 2026</p>
+      <h1 class="hero-title">The New<br/><em>British</em> Heritage</h1>
+      <p class="hero-desc">Открой коллекцию, где традиции встречают современность</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn btn-primary">Смотреть коллекцию</a>
+        <a href="#about" class="btn btn-outline">О нас</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span></span>
+      <p>Прокрути вниз</p>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE BANNER ===== -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>BURBERRY &nbsp;•&nbsp; Основан в 1856 &nbsp;•&nbsp; Лондон &nbsp;•&nbsp; Luxury Fashion &nbsp;•&nbsp; British Heritage &nbsp;•&nbsp; Iconic Trench &nbsp;•&nbsp;</span>
+      <span>BURBERRY &nbsp;•&nbsp; Основан в 1856 &nbsp;•&nbsp; Лондон &nbsp;•&nbsp; Luxury Fashion &nbsp;•&nbsp; British Heritage &nbsp;•&nbsp; Iconic Trench &nbsp;•&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="products-section" id="products">
+    <div class="section-header">
+      <h2 class="section-title">Новая Коллекция</h2>
+      <p class="section-sub">Избранные предметы сезона</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-cat="all">Все</button>
+      <button class="filter-btn" data-cat="outerwear">Верхняя одежда</button>
+      <button class="filter-btn" data-cat="accessories">Аксессуары</button>
+      <button class="filter-btn" data-cat="fragrance">Ароматы</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Products are rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <p class="section-sub">С 1856 года</p>
+        <h2 class="section-title">Британское<br/>Наследие</h2>
+        <p class="about-p">Основанный Томасом Берберри в Бейзингстоке, Burberry сегодня является одним из самых узнаваемых брендов роскоши в мире. Знаменитая клетка и культовый тренч стали символами британского стиля.</p>
+        <a href="#products" class="btn btn-primary">Исследовать</a>
+      </div>
+      <div class="about-visual">
+        <div class="plaid-card">
+          <div class="plaid-inner"></div>
+          <div class="plaid-badge">EST. 1856</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter-section">
+    <h2 class="newsletter-title">Будьте в курсе</h2>
+    <p class="newsletter-sub">Подпишитесь на эксклюзивные новости и предложения</p>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="Ваш email адрес" class="nl-input" required/>
+      <button type="submit" class="btn btn-primary">Подписаться</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-logo">BURBERRY</div>
+    <div class="footer-links">
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Условия использования</a>
+      <a href="#">Контакты</a>
+      <a href="#">Доставка и возврат</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Burberry Limited. Все права защищены.</p>
+  </footer>
+
+  <!-- ===== CART DRAWER ===== -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Корзина</h3>
+      <button onclick="toggleCart(event)" class="cart-close">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Ваша корзина пуста</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">Итого: <span id="cartTotal">0</span> ₽</div>
+      <button class="btn btn-primary" style="width:100%" onclick="checkout()">Оформить заказ</button>
+    </div>
+  </div>
+  <div class="cart-backdrop" id="cartBackdrop" onclick="toggleCart(event)"></div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
